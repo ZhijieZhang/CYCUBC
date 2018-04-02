@@ -1,0 +1,12 @@
+.container {
+	width: 1140px;
+	margin: 200px auto 0px auto;
+	text-align: center;
+}
+
+h1 {
+	font-size: 300%;
+	font-weight: 400;
+	letter-spacing: 1px;
+	font-family: 'Roboto Slab', serif;
+}
