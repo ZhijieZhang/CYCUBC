@@ -1,6 +1,11 @@
 .searchbar {
 	width: 100%;
-	margin-top: 30px;
+	margin-top: 40px;
+}
+
+.active {
+	color: #87caef;
+	background-color: #fff;
 }
 
 #session {
@@ -10,24 +15,25 @@
 
 #session li {
 	font-size: 85%;
+	font-weight: 5;
 	list-style: none;
 	display: inline-block;
-	padding-bottom: 5px;
-	padding-right: 5px;
+	/*margin-bottom: 7px;*/
 }
 
 #session li:first-child {
-	padding-right: 15px;
+	margin-left: 10px;
+	margin-right: 15px;
 }
 
 #user-input {
 	outline:none !important;
-	padding-left: 5px;
+	padding-left: 8px;
 	width: 40%;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 	box-shadow: 2px 2px 7px #187db4;
-	color: #87caef;
+	/*color: #87caef;*/
 }
 
 #search-btn {
@@ -57,5 +63,7 @@
 	background-color: #1e9ce1;
 	cursor: pointer;
 }
+
+
 
 
