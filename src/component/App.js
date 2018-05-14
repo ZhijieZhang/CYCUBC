@@ -9,7 +9,8 @@ class App extends Component {
 		super(props);
 		this.state = {
 			session: '2017W', 
-			input: ''
+			input: '',
+			noResult: false,
 		};
 		this.handleClick = this.handleClick.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -29,8 +30,14 @@ class App extends Component {
 		let [_, year, session] = this.state.session.match(/(\d{4})(\w)/);
 
 		fetch(`http://localhost:3000/course/${dept}-${course}-${section}-${year}-${session}`)
-			.then(console.log);
-		console.log(`1`);
+			.then((response) => response.json())
+			.then((response) => {
+				if (response.name === 'TBA') {
+					this.setState({noResult: true});
+				} else {
+					this.setState({noResult: false});
+				}
+			});
 	}
 
   render() {
@@ -41,6 +48,9 @@ class App extends Component {
     							handleClick={this.handleClick}
     							handleChange={this.handleChange}
     							handleSubmit={this.handleSubmit}/>
+    		{this.state.noResult &&
+    			<p>TBA</p>
+    		}
     	</div>
     );
   }
