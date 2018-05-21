@@ -1,11 +1,16 @@
 .searchbar {
 	width: 100%;
 	margin-top: 40px;
+	margin-bottom: 20px;
 }
 
 .active {
 	color: #87caef;
 	background-color: #fff;
+	border: 2px #87caef solid;
+	border-bottom: 1px white solid;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
 }
 
 #session {
@@ -14,11 +19,12 @@
 }
 
 #session li {
-	font-size: 85%;
+	font-size: 75%;
 	font-weight: 5;
 	list-style: none;
 	display: inline-block;
-	/*margin-bottom: 7px;*/
+	padding-left: 3px;
+	padding-right: 3px;
 }
 
 #session li:first-child {

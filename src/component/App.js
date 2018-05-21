@@ -10,7 +10,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			session: '2017W', 
-			input: '',
+			input: 'CPSC 110 101',
 			noResult: false,
 			results: []
 		};
@@ -38,12 +38,12 @@ class App extends Component {
 					this.setState({noResult: true});
 				} else {
 					this.setState((prevState) => {
+						response.course = this.state.input;
 						return {
 							noResult: false,
-							results: [...prevState.results, response]
+							results: [response, ...prevState.results]
 						}
 					})
-					console.log(this.state.results);
 				}
 			});
 	}

@@ -1,0 +1,58 @@
+.result-content {
+	margin: 20px auto 0px auto;
+	list-style: none;
+	width: 40%;
+	background-color: white;
+	overflow-wrap: break-word;
+	color: black;
+	opacity: 0.8;
+	text-align: left;
+	border-radius: 5px;
+}
+
+.prof-course {
+	background-color: #b4def5;
+	padding: 10px 15px 10px 15px;
+	font-size: 110%;
+	font-weight: 1;
+	color: #fff;
+}
+
+.title {
+	font-weight: 400;
+	font-size: 120%;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.prof-name {
+	font-weight: 400;
+	font-size: 135%;
+	margin-bottom: 10px;
+}
+
+.average, .prof-rating {
+	padding-left: 10px;
+}
+
+.average {
+	list-style: none;
+}
+
+.course-content {
+	line-height: 140%;
+	padding: 10px 10px 10px 15px;
+	font-size: 70%;
+}
+
+table {
+	width: 60%;
+}
+
+th {
+	font-weight: normal;
+}
+
+tr {
+	margin-left: 10px;
+}

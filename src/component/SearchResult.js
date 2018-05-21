@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../style/SearchResult.css'
+
 import Result from './Result';
 
 function SearchResult(props) {
@@ -9,7 +11,7 @@ function SearchResult(props) {
 	})
 
 	return (
-		<ul>{resultList}</ul>
+		<ul className="result-list">{resultList}</ul>
 	);
 }
 
