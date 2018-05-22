@@ -5,9 +5,13 @@ import '../style/SearchResult.css'
 import Result from './Result';
 
 function SearchResult(props) {
-	let {results} = props;
+	let {results, resultState, handleDisplayClick} = props;
 	let resultList = results.map((result, index) => {
-		return <Result key={index} profs={result}/>;	
+		return <Result key={index} 
+									profs={result} 
+									displayState={resultState[index]} 
+									index={index}
+									handleDisplayClick={handleDisplayClick}/>;	
 	})
 
 	return (

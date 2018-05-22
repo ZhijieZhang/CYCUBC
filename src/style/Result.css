@@ -10,12 +10,26 @@
 	border-radius: 5px;
 }
 
-.prof-course {
+.course-header {
 	background-color: #b4def5;
 	padding: 10px 15px 10px 15px;
 	font-size: 110%;
 	font-weight: 1;
 	color: #fff;
+}
+
+.display {
+	margin-right: 20px;
+}
+
+.operation {
+	float: right;
+	transition: color 0.5s;
+}
+
+.operation:hover {
+	color: #1e9ce1;
+	cursor: pointer;
 }
 
 .title {
@@ -29,10 +43,6 @@
 	font-weight: 400;
 	font-size: 135%;
 	margin-bottom: 10px;
-}
-
-.average, .prof-rating {
-	padding-left: 10px;
 }
 
 .average {
@@ -55,4 +65,12 @@ th {
 
 tr {
 	margin-left: 10px;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
 }

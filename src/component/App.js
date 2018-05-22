@@ -12,10 +12,12 @@ class App extends Component {
 			session: '2017W', 
 			input: 'CPSC 110 101',
 			noResult: false,
-			results: []
+			results: [],
+			resultState: []
 		};
 		this.handleClick = this.handleClick.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleDisplayClick = this.handleDisplayClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -25,6 +27,12 @@ class App extends Component {
 
 	handleChange(e) {
 		this.setState({input: e.target.value});
+	}
+
+	handleDisplayClick(index) {
+		let newResultState = this.state.resultState.slice();
+		newResultState[index] = this.state.resultState[index] === 'show' ? 'hide' : 'show';
+		this.setState({resultState: newResultState});
 	}
 
 	handleSubmit(e) {
@@ -38,10 +46,11 @@ class App extends Component {
 					this.setState({noResult: true});
 				} else {
 					this.setState((prevState) => {
-						response.course = this.state.input;
+						response.course = this.state.input.toUpperCase();
 						return {
 							noResult: false,
-							results: [response, ...prevState.results]
+							results: [response, ...prevState.results],
+							resultState: ['show', ...prevState.resultState]
 						}
 					})
 				}
@@ -61,7 +70,9 @@ class App extends Component {
     				Sorry, you either entered a wrong course section or the instructor is still TBA.
     			</div>
     		}
-    		<SearchResult results={this.state.results}/>
+    		<SearchResult results={this.state.results} 
+    									resultState={this.state.resultState}
+    									handleDisplayClick={this.handleDisplayClick}/>
     	</div>
     );
   }

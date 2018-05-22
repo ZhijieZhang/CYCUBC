@@ -3,7 +3,7 @@ import React from 'react';
 import '../style/Result.css'
 
 function Result(props) {
-	let {profs} = props;
+	let {profs, displayState, handleDisplayClick, index} = props;
 	/* 
 		profs structure:
 		{
@@ -18,44 +18,67 @@ function Result(props) {
 			avg: [{"course": ..., "year": ..., "avg": ...}, {...}, {...}, ...]
 		}
 	*/
+	function displaySymbol() {
+		return displayState === 'hide' ? '+' : '-';
+	}
 
-	return(
+	function getCourseContentState() {
+		return displayState === 'hide' ? 'course-content hide' : 'course-content show';
+	}
+
+	return (
 		<li className="result-content">
-			<div className="prof-course">{profs.course}</div>
+			<div className="course-header" onClick={()=>{handleDisplayClick(index)}}>
+				{profs.course}
+				<span className='delete operation'>Delete</span>
+				<span className='display operation'>
+					{displaySymbol()}
+				</span>
+			</div>
 			{profs.map((prof,index) => {
 				let {name, rating, avg} = prof;
-				let {rating: ratingScore, rmp, lastName} = rating;
+				let [lastName] = name.split(', ');
+				// Convert ABCD -> Abcd
+				lastName = lastName.replace(/(\w)(\w+)/g, (match, p1, p2) => p1+p2.toLowerCase());
 
 				return(
-					<div key={index} className="course-content">
+					<div key={index} className={getCourseContentState()}>
 						<div className="prof-name">{name}</div>
 						<div className="title">{`Professor ${lastName}'s rating:`}</div>
-						<div className="prof-rating">
-							{ratingScore} <br/>
-							<a href={rmp}>Visit Professor {lastName}'s Rate My Professor page</a>
-						</div>
+						{rating == null ?
+							`Rating N/A` : 
+							<div className="prof-rating">
+								{rating.rating} <br/>
+								<a href={rating.rmp}>Visit Professor {lastName}'s Rate My Professor page</a>
+							</div>
+						}
 						<div className="title">{`Courses Professor ${lastName}'s taught:`}</div>
-						<table>
-							<tr>
-								<th>Course</th>
-								<th>Average</th>
-								<th>Year</th>
-							</tr>
-							{avg.map((avg,index) => {
-								return(
-									<tr key={index} className="average">
-										<td>{avg.course}</td>
-										<td>{avg.avg}</td>
-										<td>{avg.year}</td>
+						{avg == null ?
+							`Courses N/A` :
+							<table>
+								<tbody>
+									<tr>
+										<th>Course</th>
+										<th>Average</th>
+										<th>Year</th>
 									</tr>
-								);
-							})}
-						</table>
+									{avg.map((avg,index) => {
+										return(
+											<tr key={index} className="average">
+												<td>{avg.course}</td>
+												<td>{avg.avg}</td>
+												<td>{avg.year}</td>
+											</tr>
+										);
+									})}								
+								</tbody>
+							</table>
+						}
 					</div>
 				);
 			})}
-		</li>
-	);
+		</li>	
+	);	
 }
 
 export default Result;
