@@ -11,7 +11,6 @@
 }
 
 .course-header {
-	background-color: #b4def5;
 	padding: 10px 15px 10px 15px;
 	font-size: 110%;
 	font-weight: 1;
@@ -28,7 +27,7 @@
 }
 
 .operation:hover {
-	color: #1e9ce1;
+	color: #78c4ed;
 	cursor: pointer;
 }
 
@@ -68,9 +67,29 @@ tr {
 }
 
 .hide {
-	display: none;
+	max-height: 0px;
+	transition: max-height 0.8s ease-out;
+	overflow: hidden;
 }
 
 .show {
-	display: block;
+	max-height: 2000px;
+	transition: max-height 1s ease-in;
+	overflow: hidden;
+}
+
+.dark {
+	background-color: #1e9ce1;
+	transition: background-color 2s ease;
+}
+
+.light {
+	background-color: #b4def5;
+	transition: background-color 1s ease;
+}
+
+@media only screen and (max-width: 767px) {
+	.result-content {
+		width: 70%;
+	}
 }

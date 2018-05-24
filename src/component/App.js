@@ -13,11 +13,13 @@ class App extends Component {
 			input: 'CPSC 110 101',
 			noResult: false,
 			results: [],
-			resultState: []
+			resultState: [],
+			id: 0 // id for each search result
 		};
 		this.handleClick = this.handleClick.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleDisplayClick = this.handleDisplayClick.bind(this);
+		this.handleDeletionClick = this.handleDeletionClick.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -35,6 +37,19 @@ class App extends Component {
 		this.setState({resultState: newResultState});
 	}
 
+	handleDeletionClick(e,index) {
+		e.stopPropagation();
+		let newResultState = this.state.resultState.slice();
+		let newResult = this.state.results.slice();
+		newResultState.splice(index, 1);
+		newResult.splice(index, 1);
+		this.setState(
+			{
+				resultState: newResultState,
+				results: newResult
+			});		
+	}
+
 	handleSubmit(e) {
 		let [dept, course, section] = this.state.input.split(' ');
 		let [_, year, session] = this.state.session.match(/(\d{4})(\w)/);
@@ -47,8 +62,10 @@ class App extends Component {
 				} else {
 					this.setState((prevState) => {
 						response.course = this.state.input.toUpperCase();
+						response.id = this.state.id;
 						return {
 							noResult: false,
+							id : prevState.id+1,
 							results: [response, ...prevState.results],
 							resultState: ['show', ...prevState.resultState]
 						}
@@ -72,7 +89,8 @@ class App extends Component {
     		}
     		<SearchResult results={this.state.results} 
     									resultState={this.state.resultState}
-    									handleDisplayClick={this.handleDisplayClick}/>
+    									handleDisplayClick={this.handleDisplayClick}
+    									handleDeletionClick={this.handleDeletionClick}/>
     	</div>
     );
   }

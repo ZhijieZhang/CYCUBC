@@ -1,7 +1,19 @@
+@keyframes slideInFromBottom {
+	0% {
+		transform: translateY(20vh);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0vh);
+		opacity: 1;
+	}
+}
+
 .container {
 	width: 1140px;
 	margin: 200px auto 0px auto;
 	text-align: center;
+	animation: 1s ease-out 0s 1 slideInFromBottom;
 }
 
 h1 {
@@ -9,4 +21,26 @@ h1 {
 	font-weight: 400;
 	letter-spacing: 1px;
 	font-family: 'Roboto Slab', serif;
+}
+
+@media only screen and (max-width: 1139px) {
+  .container {
+  	width: 750px;
+  	margin: 100px auto 0px auto;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+  	width: 350px;
+  	margin: 100px auto 0px auto;
+  }
+
+  html {
+  	font-size: 15px;
+  }
+
+  h1 {
+  	font-size: 170%;
+  }
 }
